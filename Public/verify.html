@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title data-key="verifyPageTitle">Telefonunu Doğrula</title>
+</head>
+
+<body>
+
+    <main class="form-container">
+
+        <div class="logo">
+            <img src="img/logo.png" alt="Gatetiming Logo">
+        </div>
+
+        <h2 data-key="verifyTitle">Doğrulama Gerekli</h2>
+        <p style="margin-bottom: 2rem;" data-key="verifyMessage">
+            Telefon numaranıza bir WhatsApp mesajı gönderdik. Lütfen 6 haneli kodu girin.
+        </p>
+
+        <form id="verifyForm">
+            <!-- Email'i gizli bir alanda tutacağız -->
+            <input type="hidden" id="email" name="email">
+
+            <div class="input-group">
+                <label for="code" data-key="verifyCodeLabel">Doğrulama Kodu:</label>
+                <input type="text" id="code" name="code" required maxlength="6"
+                    style="text-align: center; font-size: 1.5rem; letter-spacing: 5px;">
+            </div>
+
+            <button type="submit" class="submit-btn" data-key="verifyButton">Doğrula</button>
+        </form>
+
+        <div class="lang-switcher">
+            <button onclick="setLanguage('tr')" data-lang="tr" class="active">TR</button>
+            <button onclick="setLanguage('en')" data-lang="en">EN</button>
+            <button onclick="setLanguage('bg')" data-lang="bg">BG</button>
+            <button onclick="setLanguage('el')" data-lang="el">EL</button>
+        </div>
+    </main>
+
+    <!-- JS dosyaları -->
+    <script src="js/translations.js"></script>
+    <script src="js/app.js"></script> <!-- Sadece dil ayarı için -->
+    <script src="js/verify.js"></script> <!-- Bu sayfanın ana mantığı -->
+
+</body>
+
+</html>

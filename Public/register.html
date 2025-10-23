@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="registerPageTitle">Gatetiming - Kayıt Ol</title>
+
+    <!-- YENİ: Modern telefon girişi kütüphanesinin CSS'i -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+    <!-- Bizim ana stil dosyamız (kütüphaneden SONRA gelmeli) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="form-container">
+
+        <div class="logo">
+            <img src="img/logo.png" alt="Gatetiming Logo">
+        </div>
+
+        <h2 data-key="registerFormTitle">Yeni Yarışmacı Kaydı</h2>
+
+        <form id="kayitFormu" novalidate> <!-- novalidate eklendi, kütüphane kendi doğrulamasını yapacak -->
+
+            <div class="input-group">
+                <label for="email" data-key="emailLabel">E-posta Adresi:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- YENİ: Telefon alanı kütüphane için güncellendi -->
+            <div class="input-group">
+                <label for="phone" data-key="phoneInputLabel">Telefon Numarası:</label>
+                <!-- Kütüphane bu basit input'u modern bir bileşene dönüştürecek -->
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password" data-key="passwordLabel">Şifre:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="submit-btn" data-key="submitButton">Kayıt Ol</button>
+        </form>
+
+        <div class="form-footer-link">
+            <span data-key="loginPrompt">Zaten bir hesabınız var mı?</span>
+            <a href="/" data-key="loginLink">Giriş Yap</a>
+        </div>
+
+        <div class="lang-switcher">
+            <button onclick="setLanguage('tr')" data-lang="tr" class="active">TR</button>
+            <button onclick="setLanguage('en')" data-lang="en">EN</button>
+            <button onclick="setLanguage('bg')" data-lang="bg">BG</button>
+            <button onclick="setLanguage('el')" data-lang="el">EL</button>
+        </div>
+    </main>
+
+    <!-- YENİ: Modern telefon girişi kütüphanesinin JavaScript'i -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    <!-- Bizim JS dosyalarımız (kütüphaneden SONRA gelmeli) -->
+    <script src="js/translations.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

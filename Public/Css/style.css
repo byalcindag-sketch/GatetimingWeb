@@ -1,0 +1,548 @@
+/* Google'dan modern bir font import ediyoruz */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Değişkenler (Tüm stil dosyasında kullanılacak renkler) */
+:root {
+    --primary-color: #0056b3;
+    /* Daha koyu, sofistike bir mavi */
+    --secondary-color: #007bff;
+    /* Daha açık mavi */
+    --text-color-dark: #2c3e50;
+    --text-color-light: #555;
+    --border-color: #e0e0e0;
+    --bg-light: #f8f9fa;
+    --bg-gradient-start: #eef2f3;
+    /* Açık gri mavimsi */
+    --bg-gradient-end: #ffffff;
+}
+
+/* Genel sayfa ayarları */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color-light);
+    line-height: 1.6;
+}
+
+/* Ana form kutusu (Giriş/Kayıt/Doğrulama) */
+.form-container {
+    background-color: white;
+    padding: 3rem 3.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo stilleri */
+.logo {
+    margin-bottom: 2.5rem;
+}
+
+.logo img {
+    max-width: 250px;
+    height: auto;
+    filter: invert(0%);
+}
+
+.form-container h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color-dark);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.form-container p {
+    /* Giriş ve doğrulama sayfasındaki açıklama metinleri */
+    margin-bottom: 2rem;
+    color: var(--text-color-light);
+    font-size: 1rem;
+}
+
+/* Form içindeki her bir input grubu */
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    font-size: 0.95rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--bg-light);
+    color: var(--text-color-dark);
+}
+
+.input-group input::placeholder {
+    color: #a0a0a0;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    background-color: white;
+}
+
+/* Buton stilleri */
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.5px;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Sayfa geçiş linkleri (Kayıt ol / Giriş yap) */
+.form-footer-link {
+    margin-top: 1.8rem;
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+}
+
+.form-footer-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.form-footer-link a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Dil seçimi kutusu */
+.lang-switcher {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.lang-switcher button {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    color: var(--text-color-light);
+    font-weight: 500;
+}
+
+.lang-switcher button:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    color: var(--text-color-dark);
+}
+
+.lang-switcher button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+
+
+/* === YENİ: intl-tel-input Kütüphanesi İçin Stil Düzeltmeleri (Revize Edildi) === */
+
+/* Kütüphanenin formumuzla tam uyumlu çalışması için */
+.iti {
+    width: 100%;
+    display: block;
+    position: relative;
+    /* Pozisyonlama için */
+}
+
+/* Kütüphane input'unun bizim diğer input'larımızla aynı görünmesini sağla */
+/* Not: Kendi CSS'i .iti__tel'i ezdiği için !important kullanmamız gerekiyor */
+.iti__tel {
+    width: 100%;
+    padding: 1rem 1.2rem !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    background-color: var(--bg-light) !important;
+    color: var(--text-color-dark) !important;
+    /* Bayrak listesi için padding ayarı (daha fazla boşluk) */
+    padding-left: 70px !important;
+    /* Genişletildi */
+    height: auto;
+    /* Yüksekliği otomatik ayarla */
+}
+
+/* Seçili bayrağın olduğu alan (Tıklanabilir kısım) */
+.iti__flag-container {
+    height: 100%;
+    position: absolute;
+    /* Input'un üzerine bindir */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    width: 62px;
+    /* Sabit genişlik */
+    cursor: pointer;
+}
+
+/* Bayrak ve oku içeren iç div */
+.iti__selected-flag {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background-color: var(--bg-light);
+    /* Input ile aynı arka plan */
+    border-radius: 10px 0 0 10px;
+    /* Sadece sol köşeleri yuvarla */
+    border-right: 1px solid var(--border-color);
+    /* Ayırıcı çizgi */
+    transition: background-color 0.3s ease;
+}
+
+/* Bayrak konteynerinin üzerine gelince arka planı değiştir */
+.iti__flag-container:hover .iti__selected-flag {
+    background-color: #e9ecef;
+    /* Hafif hover efekti */
+}
+
+/* Orijinal oku (Windows görünümlü) gizle */
+.iti__arrow {
+    display: none;
+}
+
+/* Kendi modern okumuzu (chevron) ekleyelim */
+.iti__selected-flag::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid var(--text-color-light);
+    border-bottom: 2px solid var(--text-color-light);
+    transform: rotate(45deg);
+    margin-left: 6px;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+}
+
+/* Liste açıldığında oku yukarı döndür */
+.iti--open .iti__selected-flag::after {
+    transform: rotate(-135deg);
+}
+
+
+/* Kütüphane input'u focus olduğunda (tıklandığında) */
+.iti__tel:focus {
+    outline: none !important;
+    border-color: var(--secondary-color) !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2) !important;
+    background-color: white !important;
+}
+
+/* Input focus olduğunda, bayrak kısmının kenarlığını da mavi yap */
+.iti__tel:focus+.iti__flag-container .iti__selected-flag {
+    border-color: var(--secondary-color);
+}
+
+/* Hata durumunda (eğer kütüphane eklerse) */
+.iti.iti--error .iti__tel {
+    border-color: #dc3545 !important;
+}
+
+.iti.iti--error .iti__tel:focus+.iti__flag-container .iti__selected-fig {
+    border-color: #dc3545 !important;
+}
+
+/* Kütüphanenin ülke listesi açılır menüsü */
+.iti__country-list {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    /* Diğer elementlerin üzerinde kalmasını garantile */
+}
+
+/* Listedeki her bir ülke (daha fazla boşluk) */
+.iti__country {
+    padding: 8px 12px;
+    /* Genişletildi */
+}
+
+.iti__country:hover,
+.iti__country.iti__highlight {
+    background-color: var(--bg-light);
+}
+
+.iti__dial-code {
+    color: var(--text-color-light);
+}
+
+/* Kütüphanenin kendi bayrak sprite dosyasını yükle */
+.iti__flag {
+    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png");
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .iti__flag {
+        background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png");
+    }
+}
+
+/* === intl-tel-input Stil Sonu === */
+
+
+/* === YENİ: Dashboard (Panel) Stilleri === */
+
+/* body'yi dashboard'da farklı ayarlayalım */
+body.dashboard {
+    display: block;
+    /* Flex'i iptal et */
+    background: var(--bg-light);
+    /* Arka planı düz renk yap */
+    align-items: stretch;
+    /* Varsayılanı sıfırla */
+    justify-content: stretch;
+    /* Varsayılanı sıfırla */
+    min-height: 100vh;
+}
+
+/* Dashboard için ana konteyner */
+.dashboard-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Dashboard Başlığı */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.dashboard-header h1 {
+    color: var(--text-color-dark);
+    font-size: 2.2rem;
+}
+
+.dashboard-header p {
+    color: var(--text-color-light);
+    font-size: 1rem;
+    margin: 0;
+    /* body'deki p marjını sıfırla */
+}
+
+.dashboard-header a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.dashboard-header a:hover {
+    color: var(--secondary-color);
+}
+
+/* Dashboard'u iki sütunlu yapmak için */
+.dashboard-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    /* Sütunları yukarıdan hizala */
+}
+
+/* Sol Sütun (Yarış Listesi) */
+.race-list-container {
+    flex: 2;
+    /* %66 genişlik */
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.race-list-container h2 {
+    color: var(--text-color-dark);
+    margin-bottom: 1.5rem;
+}
+
+#raceList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#raceList li {
+    background: var(--bg-light);
+    padding: 1.2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#raceList li:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+#raceList li .race-info strong {
+    font-size: 1.1rem;
+    color: var(--text-color-dark);
+}
+
+#raceList li .race-info span {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    display: block;
+    margin-top: 0.2rem;
+}
+
+#raceList li .race-actions .btn-detail {
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+#raceList li .race-actions .btn-detail:hover {
+    background-color: var(--primary-color);
+}
+
+#noRacesMessage {
+    color: var(--text-color-light);
+}
+
+/* Sağ Sütun (Yeni Yarış Formu) */
+.create-race-container {
+    flex: 1;
+    /* %33 genişlik */
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    /* Formun kayarken yapışık kalması */
+    top: 2rem;
+}
+
+.create-race-container h2 {
+    color: var(--text-color-dark);
+    margin-bottom: 1.5rem;
+}
+
+/* Formdaki submit butonu (genel .submit-btn'den farklı) */
+#createRaceForm .submit-btn {
+    margin-top: 1rem;
+}
+
+
+/* Responsive Düzenlemeler */
+@media (max-width: 992px) {
+    .dashboard-content {
+        flex-direction: column;
+        /* Sütunları alt alta diz */
+    }
+
+    .create-race-container {
+        width: 100%;
+        position: static;
+        /* Yapışkanlığı kaldır */
+    }
+}
+
+@media (max-width: 576px) {
+    .form-container {
+        padding: 2rem;
+        margin: 1rem;
+        border-radius: 15px;
+    }
+
+    .form-container h2 {
+        font-size: 1.7rem;
+    }
+
+    .logo img {
+        max-width: 200px;
+    }
+
+    .lang-switcher {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .dashboard-container {
+        padding: 1rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
