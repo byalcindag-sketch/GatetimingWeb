@@ -8,35 +8,65 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <div class="form-container">
+<body class="dashboard">
 
-        <!-- Logo -->
-        <div class="logo">
-            <img src="img/logo.png" alt="Gatetiming Logo">
-        </div>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div>
+                <h1 id="welcome-header">Panel</h1>
+                <p id="welcome-email">Yükleniyor...</p>
+            </div>
+            <a href="#" id="logout-button">Güvenli Çıkış Yap</a>
+        </header>
 
-        <!-- ID ekledik -->
-        <h2 id="welcome-message">Yükleniyor...</h2>
+        <main class="dashboard-content">
 
-        <p>Giriş yaptınız. Burası sizin korumalı paneliniz.</p>
+            <aside class="profile-container">
+                <h2>Profil Bilgileri</h2>
+                <form id="profileForm">
+                    <div class="input-group">
+                        <label for="firstName">Adınız:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Adınızı girin">
+                    </div>
+                    <div class="input-group">
+                        <label for="lastName">Soyadınız:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Soyadınızı girin">
+                    </div>
+                    <div class="input-group">
+                        <label for="nationalId">TC Kimlik No:</label>
+                        <input type="text" id="nationalId" name="nationalId" placeholder="TC Kimlik Numaranızı girin">
+                    </div>
 
-        <!-- Yarış Geçmişi Linki (Şimdilik placeholder) -->
-        <p style="margin: 1.5rem 0;">
-            <a href="#" style="color: #007bff; text-decoration: none; font-weight: 600;">
-                Yarış Geçmişimi Görüntüle
-            </a>
-        </p>
+                    <button type="submit" class="submit-btn">Bilgileri Kaydet</button>
+                </form>
 
-        <!-- ID ekledik -->
-        <p>
-            <a href="/" id="logout-button" style="color: #dc3545; font-weight: 600;">
-                Güvenli Çıkış Yap
-            </a>
-        </p>
+                <div class="verification-status">
+                    <h3>Doğrulama Durumu</h3>
+                    <div class="status-item" id="phone-status">
+                        <span>Cep Telefonu</span>
+                        <span class="status-badge">Yükleniyor...</span>
+                    </div>
+                    <div class="status-item" id="email-status">
+                        <span>E-posta Adresi</span>
+                        <span class="status-badge">Yükleniyor...</span>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="main-content-container">
+                <h2>Lisans Dosyaları</h2>
+                <div class="file-upload-area">
+                    <label for="licenseFile" class="file-upload-label">Yeni Lisans Yükle</label>
+                    <input type="file" id="licenseFile" name="licenseFile" class="file-upload-input">
+                </div>
+                <div class="file-list">
+                    <p>Henüz yüklenmiş bir lisans dosyası bulunmuyor.</p>
+                </div>
+            </section>
+
+        </main>
     </div>
 
-    <!-- Yeni JS dosyamızı buraya ekledik -->
     <script src="js/dashboard.js"></script>
 </body>
 

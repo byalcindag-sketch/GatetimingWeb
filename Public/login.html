@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title data-key="registerPageTitle">Gatetiming - Kayıt Ol</title>
+    <title data-key="loginPageTitle">Gatetiming - Giriş Yap</title>
 </head>
 
 <body>
@@ -16,44 +16,26 @@
             <img src="img/logo.png" alt="Gatetiming Logo">
         </div>
 
-        <h2 data-key="registerFormTitle">Yeni Yarışmacı Kaydı</h2>
+        <h2 data-key="loginFormTitle">Hoş Geldiniz!</h2>
+        <p data-key="welcomeMessage">Lütfen devam etmek için giriş yapın.</p>
 
-        <form id="kayitFormu">
+        <form id="loginFormu">
             <div class="input-group">
                 <label for="email" data-key="emailLabel">E-posta Adresi:</label>
                 <input type="email" id="email" name="email" required>
             </div>
-
-            <!-- === GÜNCELLENEN TELEFON BÖLÜMÜ === -->
-            <div class="input-group">
-                <label for="phone" data-key="phoneLabel">Telefon Numarası:</label>
-                <div class="phone-input-container">
-                    <select id="countryCode" name="countryCode" aria-label="Ülke Kodu">
-                        <option value="90">TR (+90)</option>
-                        <option value="359">BG (+359)</option>
-                        <option value="30">EL (+30)</option>
-                        <option value="49">DE (+49)</option>
-                        <option value="44">UK (+44)</option>
-                        <option value="1">US (+1)</option>
-                        <!-- İhtiyaca göre daha fazla ülke eklenebilir -->
-                    </select>
-                    <input type="tel" id="phone" name="phone" data-key="phonePlaceholder" placeholder="Numaranızı girin"
-                        required>
-                </div>
-            </div>
-            <!-- === GÜNCELLEME SONU === -->
 
             <div class="input-group">
                 <label for="password" data-key="passwordLabel">Şifre:</label>
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <button type="submit" class="submit-btn" data-key="submitButton">Kayıt Ol</button>
+            <button type="submit" class="submit-btn" data-key="loginButton">Giriş Yap</button>
         </form>
 
         <div class="form-footer-link">
-            <span data-key="loginPrompt">Zaten bir hesabınız var mı?</span>
-            <a href="/" data-key="loginLink">Giriş Yap</a>
+            <span data-key="registerPrompt">Hesabınız yok mu?</span>
+            <a href="/register.html" data-key="registerLink">Kayıt Ol</a>
         </div>
 
         <div class="lang-switcher">

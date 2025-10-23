@@ -22,6 +22,21 @@ const sequelize = new Sequelize({
 
 // === KULLANICI MODELİ (server.js içine taşındı) ===
 const User = sequelize.define('User', {
+
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: true // Başlangıçta boş olabilir
+    },
+    lastName: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    nationalId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        // unique: true // Gerekirse TC Kimlik No'yu eşsiz yapabilirsiniz
+    },
+
     email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -278,14 +293,33 @@ const authMiddleware = (req, res, next) => {
 
 app.get('/api/user/profile', authMiddleware, async (req, res) => {
     try {
-        const user = await User.findByPk(req.user.id, {
-            attributes: ['id', 'email', 'phone', 'isPhoneVerified']
+        // 1. İstek body'sinden güncellenecek verileri al
+        const { firstName, lastName, nationalId } = req.body;
+
+        // 2. Middleware sayesinde token'dan gelen kullanıcıyı bul
+        const user = await User.findByPk(req.user.id);
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'Güncellenecek kullanıcı bulunamadı.' });
+        }
+
+        // 3. Kullanıcının alanlarını yeni verilerle güncelle
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.nationalId = nationalId;
+
+        // 4. Değişiklikleri veritabanına kaydet
+        await user.save();
+
+        // 5. Başarılı olduğuna dair bir mesaj gönder
+        res.status(200).json({
+            success: true,
+            message: 'Profil bilgileriniz başarıyla güncellendi.'
         });
-        if (!user) return res.status(4404).json({ success: false, message: 'Kullanıcı bulunamadı.' });
-        res.status(200).json({ success: true, user: user });
+
     } catch (error) {
-        console.error('Profil bilgisi alınırken hata:', error);
-        res.status(500).json({ success: false, message: 'Sunucu hatası.' });
+        console.error('Profil güncellenirken hata:', error);
+        res.status(500).json({ success: false, message: 'Sunucu hatası nedeniyle profil güncellenemedi.' });
     }
 });
 
